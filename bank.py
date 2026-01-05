@@ -2,36 +2,36 @@ import random
 import re
 
 class Bank:
-    dic={}
     def __init__(self,name,ph_no,bal,acc_no):
         self.name = name
         self.ph_no = ph_no
         self.bal = bal
         self.acc_no = acc_no
 
-    def main(self):
+    def main():
+        
         print("------Bank Account Management System------")
         # selecting a option for below
         i=int(input("\n1.Account Creation\n2.Withdrawal\n3.Deposit\n4.Balance Inquiry\n5.Transaction History\n6.Account Details Display\n7.Exit\nEnter a proper option:"))
         if i==1:
             a=input("b.Savings Account Creation \nc.Current Account Creation\npress option")
             if a=='b':
-                savings_acc()
+                dic,data_list =savings_acc(self)
             elif a=='c':
-                current()
+                dic,data_list=current_acc(self)
             else:
                 print("wrong value")
                 exit()
         elif i==2:
-            withdrawal()
+            withdrawal(self,dic,data_list)
         elif i==3:
-            deposit()
+            deposit(self,dic,data_list)
         elif i==4:
-            balance_inquiry()
+            balance_inquiry(self,dic,data_list)
         elif i==5:
-            transaction_his()
+            transaction_his(self,dic,data_list)
         elif i==6:
-            account_display()
+            account_display(self,dic,data_list)
         else:
             exit()
                     
@@ -39,7 +39,7 @@ class Bank:
            self.name=input("Enter your name:")
            self.ph_no=int(input("Enter your phone nunber:"))
            #creating 10 digit number in string
-           # 0 to 9 digit to selected and it done more 9 time in for loop
+           # 0 to 9 digit to selected and it done more 10 time in for loop
            star=("".join([str(random.randint(0,9)for _ in range(0,10))]))
            # converting string into intger
            self.acc_no=int(star)
@@ -56,6 +56,17 @@ class Bank:
                   print(f"phone number{self.ph_no}")
                   print(f"Balance{self.bal}")
                   
-           return None
+           return {self.acc_no: [self.name,self.bal,self.ph_no]}, self.acc_no
+    
+
+    def current_acc(self):
+        self.name=input("Enter your name:")
+        self.ph_no=int(input("Enter your phone number:"))
+        #creating 10 digit number in string
+        #0 to 9 digit to selected and it done more 10 time in for loop
+        arc=("".join([str(random.randint(0,9)for _ in range(0,10))]))
+        self.acc_no=int(arc)
+        
+
 
            
