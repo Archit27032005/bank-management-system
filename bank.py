@@ -16,7 +16,7 @@ class Bank:
         if i==1:
             a=input("b.Savings Account Creation \nc.Current Account Creation\npress option")
             if a=='b':
-                dic,data_list =savings_acc(self)
+                dic,data_list=savings_acc(self)
             elif a=='c':
                 dic,data_list=current_acc(self)
             else:
@@ -65,7 +65,24 @@ class Bank:
         #creating 10 digit number in string
         #0 to 9 digit to selected and it done more 10 time in for loop
         arc=("".join([str(random.randint(0,9)for _ in range(0,10))]))
+        #string to intger
         self.acc_no=int(arc)
+        print("\n the minmum amount is 100")
+        self.bal=int(input("Enter a anount:"))
+        if self.bal<100:
+            print("less than 100")
+            exit()
+        
+        else:
+            print("Account Created")
+            print(f"name:{self.name}")
+            print(f"Account number:{self.acc_no}")
+            print(f"Phone number{self.ph_no}")
+            print(f"Balance{self.bal}")
+
+        return {self.acc_no:[self.name,self.bal,self.ph_no]},self.acc_no
+    
+    def 
         
 
 
