@@ -86,10 +86,28 @@ class Bank:
          #take an input value to check the account is there
          o = int(input("enter the account number"))
          if o in dic.self.acc_no:
-             c = int(input("enter the value:"))
+             c = int(input("enter the amount want:"))
              #in list 1 the value is bal that will be updated
-             data_list[1] += c
+             data_list[1] -= c
+             print(data_list[1])
+             print("amount is updates")
+         else:
+            Exit()
             
+        return dic, data_list
+
+    def deposit(self,dic,data_list):
+        o = int(input("enter the account number"))
+         if o in dic.self.acc_no:
+            c=int(input("enter the amount to deposit"))
+            data_list[1]+=c
+            print(data_list[1])
+            print("amount is updates")
+         else:
+            exit()
+
+        return dic, data_list
+               
         
 
 
