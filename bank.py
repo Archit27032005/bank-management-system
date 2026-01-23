@@ -12,7 +12,7 @@ class Bank:
     def main(self):         
         print("------Bank Account Management System------")
         # selecting a option for below
-        i = int(input("\n1.Account Creation\n2.Withdrawal\n3.Deposit\n4.Balance Inquiry\n5.Transaction History\n6.Account Details Display\n7.Exit\nEnter a proper option:"))
+        i = int(input("\n1.Account Creation\n2.Withdrawal\n3.Deposit\n4.Balance Inquiry\n5.Account Details Display\n6.Exit\nEnter a proper option:"))
         if i == 1:
             a = input("b.Savings Account Creation \nc.Current Account Creation\npress option")
             if a == 'b':
@@ -29,8 +29,6 @@ class Bank:
         elif i == 4:
             balance_inquiry(self,dic,data_list)
         elif i == 5:
-            transaction_his(self,dic,data_list)
-        elif i == 6:
             account_display(self,dic,data_list)
         else:
             exit()
@@ -84,7 +82,7 @@ class Bank:
     
     def withdrawal(self,dic,data_list):
          #take an input value to check the account is there
-         o = int(input("enter the account number"))
+         o = int(input("enter the account number:"))
          if o in dic.self.acc_no:
              c = int(input("enter the amount want:"))
              #in list 1 the value is bal that will be updated
@@ -97,7 +95,7 @@ class Bank:
         return dic, data_list
 
     def deposit(self,dic,data_list):
-        o = int(input("enter the account number"))
+        o = int(input("enter the account number:"))
          if o in dic.self.acc_no:
             c=int(input("enter the amount to deposit"))
             data_list[1]+=c
@@ -107,8 +105,28 @@ class Bank:
             exit()
 
         return dic, data_list
-               
+    def balance_inquiry(self,dic,data_list):
+        o=int(input("enter the account number:"))
+        if o in dic.self.acc_no:
+            print("account number:",dic.self.acc_no)
+            print("balance:",data_list[1])
+        else:
+            exit()
         
+        return dic,data_list
+
+def account_display(self,dic,data_list):
+    o=int(input("enter the account number:"))
+    if o in dic.self.acc_no:
+        print(f"account number:{dic.self.acc_no}")
+        print(f"Name:{data_list[0]}")
+        print(f"Phone:{data_list[2]}")
+        print(f"balance:{data_list[1]}")               
+    else:
+        exit()
+
+if __name__=="__main__":
+    main()        
 
 
            
