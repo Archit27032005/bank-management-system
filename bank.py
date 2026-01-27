@@ -1,3 +1,4 @@
+
 import random
 import re
 
@@ -54,7 +55,7 @@ class Bank:
                    print(f"Balance{self.bal}")
                    
                   
-             return {self.acc_no: [self.name,self.bal,self.ph_no]}, self.acc_no
+            return {self.acc_no: [self.name,self.bal,self.ph_no]}, self.acc_no
     
 
     def current_acc(self):
@@ -92,16 +93,16 @@ class Bank:
          else:
             Exit()
             
-        return dic, data_list
+         return dic, data_list
 
     def deposit(self,dic,data_list):
         o = int(input("enter the account number:"))
-         if o in dic.self.acc_no:
+        if o in dic.self.acc_no:
             c=int(input("enter the amount to deposit"))
             data_list[1]+=c
             print(data_list[1])
             print("amount is updates")
-         else:
+        else:
             exit()
 
         return dic, data_list
@@ -125,8 +126,8 @@ def account_display(self,dic,data_list):
     else:
         exit()
 
-if __name__=="__main__":
-    main()        
+#if __name__=="__main__":
+    #main()
 
 
            
