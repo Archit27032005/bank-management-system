@@ -38,9 +38,9 @@ class Bank:
     def saving_account(self):
         name=input("enter your name:")
         try:
-            ph_no=int(input("enter the phone number"))
+            ph_no=int(input("enter the phone number:"))
         except ValueError:
-            print("enter a number")
+            print("enter a number!")
             return
          
         #creating 10 digit number in string
@@ -51,16 +51,19 @@ class Bank:
         try:
             bal = int(input("Enter a amount:"))
         except ValueError:
-            print("Invalid amount. Please enter a number.")
-        if bal < 100:
-            print("less than 100 ")
+            print("Invalid amount. Please enter a number!")
             return
+        
+        if bal < 100:
+            print("less than 100!")
+            return
+        
         else:
                 print("Account created")
                 print(f"name:{name}")
                 print(f"Account number:{acc_no}")
-                print(f"phone number{ph_no}")
-                print(f"Balance{bal}")
+                print(f"phone number:{ph_no}")
+                print(f"Balance:{bal}")
         
         self.dic_id[acc_no]={"name":name,"ph_no":ph_no,"bal":bal, "type":"saving account"}
     
@@ -69,7 +72,7 @@ class Bank:
         try:
             ph_no=int(input("enter your number:"))
         except ValueError:
-            print("enter a number")
+            print("enter a number!")
             return
         
         #creating 10 digit number in string
@@ -80,37 +83,92 @@ class Bank:
         try:
             bal = int(input("Enter a amount:"))
         except ValueError:
-            print("Invalid amount. Please enter a number.")
+            print("Invalid amount. Please enter a number!")
+            return
         if bal < 100:
-            print("less than 100 ")
+            print("less than 100!")
             return
         else:
                 print("Account created")
                 print(f"name:{name}")
                 print(f"Account number:{acc_no}")
-                print(f"phone number{ph_no}")
-                print(f"Balance{bal}")
+                print(f"phone number:{ph_no}")
+                print(f"Balance:{bal}")
 
-        self.dic_id[acc_no]={"name":name,"ph_no":ph_no,"bal":bal, "type":"current account"}
+        self.dic_id[acc_no]={'name':name,'ph_no':ph_no,'bal':bal, 'type':"current account"}
 
     def deposit(self):
         try:
             no=int(input("enter your account number:"))
         except ValueError:
-            print("enter a correct account number")
+            print("enter a correct account number!")
             return
+        
         if no in self.dic_id:
             try:
                 ad=int(input("enter your amount:"))
             except ValueError:
-                print("Invalid amount. Please enter a number.")
+                print("Invalid amount. Please enter a number!")
                 return
-            ad += self.dic_id[no]["bal"]
-            print(f"new Balance is:{self.dic_id[no]["bal"]}")
-        else: 
-            print("account not found")
-
-        
-        
-        
             
+            self.dic_id[no]["bal"] += ad
+            print(f"new Balance is:{self.dic_id[no]['bal']}")
+        else: 
+            print("account not found!")
+            
+    
+    def withdrawal(self):
+        try:
+            no=int(input("enter your account number:"))
+        except ValueError:
+            print("enter a correct account number!")
+            return
+        
+        if no in self.dic_id:
+            try:
+                ad=int(input("enter your amount:"))
+            except ValueError:
+                print("Invalid amount. Please enter a number!")
+                return
+            
+            if ad > self.dic_id[no]["bal"]:    
+                print("Insufficient balance!")
+                return
+            
+            self.dic_id[no]["bal"] -= ad 
+            print(f"new Balance is:{self.dic_id[no]['bal']}")
+        else: 
+            print("account not found!")
+            
+
+    def balance_inq(self):
+        try:
+            no=int(input("enter your account number:"))
+        except ValueError:
+            print("enter a correct account number!")
+            return
+        if no in self.dic_id:
+            print(f"account number is :{no}")
+            print(f"balance is :{self.dic_id[no]['bal']}")
+        else:
+            print("account not found")
+            
+    
+    def account_display(self):
+        try:
+            no=int(input("enter your account number:"))
+        except ValueError:
+            print("enter a correct account number!")
+            return
+        if no in self.dic_id:
+            print(f"account number: {no}")
+            print(f"name : {self.dic_id[no]['name']}")
+            print(f"phone number:{self.dic_id[no]['ph_no']}")
+            print(f"balance: {self.dic_id[no]['bal']}")
+            print(f"account type:{self.dic_id[no]['type']}")
+        else:
+            print("account not found!")
+            
+
+bank = Bank()
+bank.main()
