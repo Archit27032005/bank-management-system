@@ -12,7 +12,7 @@ class Bank:
                 op=int(input("Enter Your Option:"))
             except ValueError:
                 print("enter a number")
-                continue
+                return
             if op==1:
                 print("a.Savings Account or b.Current Account")
                 op_2=input("Enter your option:").lower()
